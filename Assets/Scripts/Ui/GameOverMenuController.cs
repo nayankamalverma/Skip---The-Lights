@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,11 +14,13 @@ public class GameOverMenuController : MonoBehaviour
 
     private void RestartGame()                      ///creating gameover
     {
+        SoundManger.Instance.Play(Sounds.ButtonClick);
         UiManager.Instance.Replay();
     }
 
     private void EndGame()
     {
+        SoundManger.Instance.Play(Sounds.ButtonClick);
         UiManager.Instance.BackToMenu();
     }
 }

@@ -61,6 +61,7 @@ public class UiManager : MonoBehaviour
 
     public void GameOver()
     {
+        SoundManger.Instance.Play(Sounds.GameOver);
         gameOverMenu.SetActive(true);
         gameManager.GameOver();
 
