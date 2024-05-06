@@ -35,6 +35,7 @@ public class PlayerMovementController : MonoBehaviour
         #region jumping
         if (isGrounded && Input.GetButtonDown("Jump"))
         {
+            SoundManger.Instance.Play(Sounds.Jump);
             isJumping = true;
             rigidBody.velocity = Vector2.up * jumpForce ;
         }
@@ -60,6 +61,7 @@ public class PlayerMovementController : MonoBehaviour
         #region Crouching
         if(isGrounded && Input.GetButton("Crouch"))
         {
+         //   SoundManger.Instance.Play(Sounds.Jump);
             runner.localScale = new Vector3(runner.localScale.x, crouchHeight , runner.localScale.y);
         }
         if(isJumping)

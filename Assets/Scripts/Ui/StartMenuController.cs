@@ -16,10 +16,12 @@ public class StartMenuController : MonoBehaviour
     
     private void StartGame()
     {
+        SoundManger.Instance.Play(Sounds.ButtonClick);
         UiManager.Instance.StartGame();
     }
     private void ExitGame()
     {
+        SoundManger.Instance.Play(Sounds.ButtonClick);
         Application.Quit();
     }
 
