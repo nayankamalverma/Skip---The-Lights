@@ -19,9 +19,16 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        //if we have data then load data 
-        //else create new data
-        GameData = new GameData();
+        string loadedData = SaveSystem.Load("save");
+        if(loadedData != null)
+        {
+            GameData = JsonUtility.FromJson<GameData>(loadedData);
+        }
+        else
+        {
+            GameData = new GameData();
+        }
+        
     }
 
     private void Update()
@@ -46,16 +53,20 @@ public class GameManager : MonoBehaviour
         if(GameData.highscore <  currenScore)
         {
             GameData.highscore = currenScore;
+
+            string saveString = JsonUtility.ToJson(GameData);
+
+            SaveSystem.Save("save", saveString);
         }
         isPlaying = false;
     }
 
     public string GetScore()
     {
-        return Mathf.RoundToInt(currenScore).ToString();
+        return Mathf.Floor(currenScore).ToString();
     }
     public string GetHighScore()
     {
-        return Mathf.RoundToInt(GameData.highscore).ToString();
+        return Mathf.Floor(GameData.highscore).ToString();
     }
 }
