@@ -57,7 +57,7 @@ public class ObstacelSpawner : MonoBehaviour
 
 	private void CalculateFactors()
 	{
-		//obstacleSpawnTime = spawnTime* Mathf.Pow(timeAlive, spawnTimeFactor);
+		obstacleSpawnTime = spawnTime / Mathf.Pow(timeAlive, spawnTimeFactor);
 		obstacleSpeed = speed * Mathf.Pow(timeAlive, speedFactor);
 	}
 

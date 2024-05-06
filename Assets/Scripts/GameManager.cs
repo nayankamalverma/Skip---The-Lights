@@ -3,6 +3,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+    public GameData GameData;
 
     [SerializeField] private GameObject player;
     public float currenScore = 0f;
@@ -14,6 +15,13 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
         }
+    }
+
+    private void Start()
+    {
+        //if we have data then load data 
+        //else create new data
+        GameData = new GameData();
     }
 
     private void Update()
@@ -29,16 +37,25 @@ public class GameManager : MonoBehaviour
     {
         isPlaying = true;
         if( !player.activeSelf )player.SetActive(true);
+
+        currenScore = 0f;
     }
 
     public void GameOver()
     {
-        currenScore = 0f;
+        if(GameData.highscore <  currenScore)
+        {
+            GameData.highscore = currenScore;
+        }
         isPlaying = false;
     }
 
     public string GetScore()
     {
-        return Mathf.Floor(currenScore).ToString();
+        return Mathf.RoundToInt(currenScore).ToString();
+    }
+    public string GetHighScore()
+    {
+        return Mathf.RoundToInt(GameData.highscore).ToString();
     }
 }

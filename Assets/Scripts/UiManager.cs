@@ -7,6 +7,8 @@ public class UiManager : MonoBehaviour
     [SerializeField] private GameObject startMenu;
     [SerializeField] private GameObject gameOverMenu;
     [SerializeField] private TextMeshProUGUI score;
+    [SerializeField] private TextMeshProUGUI gameOverScore;
+    [SerializeField] private TextMeshProUGUI gameOverHighScore;
 
 
     //varible for initialization
@@ -61,5 +63,8 @@ public class UiManager : MonoBehaviour
     {
         gameOverMenu.SetActive(true);
         gameManager.GameOver();
+
+        gameOverScore.text = "Score : " + gameManager.GetScore();
+        gameOverHighScore.text = "HighScore : " + gameManager.GetHighScore();
     }
 }
