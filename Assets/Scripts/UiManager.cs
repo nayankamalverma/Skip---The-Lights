@@ -5,12 +5,13 @@ public class UiManager : MonoBehaviour
 {
     //Ui objects
     [SerializeField] private GameObject startMenu;
-   // [SerializeField] private GameObject gameOverMenu;
+    [SerializeField] private GameObject gameOverMenu;
     [SerializeField] private TextMeshProUGUI score;
 
 
     //varible for initialization
     private GameManager gameManager;
+    private ObstacelSpawner obstacelSpawner;
     public static UiManager Instance;
 
 
@@ -24,6 +25,7 @@ public class UiManager : MonoBehaviour
     private void Start()
     {
         gameManager = GameManager.Instance;
+        obstacelSpawner = ObstacelSpawner.Instance;
     }
     private void Update()
     {
@@ -34,9 +36,22 @@ public class UiManager : MonoBehaviour
     public void StartGame()
     {
         startMenu.SetActive(false);
+        obstacelSpawner.ResetGame();
         gameManager.StartGame();
     }
 
+    public void BackToMenu()
+    {
+        startMenu.SetActive(true);
+        gameOverMenu.SetActive(false);
+    }
+
+    public void Replay()
+    {
+        gameOverMenu.SetActive(false);
+        obstacelSpawner.ResetGame();
+        gameManager.StartGame();
+    }
     private void UpdateScore()
     {
         score.text = "Score : " + gameManager.GetScore();
@@ -44,6 +59,7 @@ public class UiManager : MonoBehaviour
 
     public void GameOver()
     {
+        gameOverMenu.SetActive(true);
         gameManager.GameOver();
     }
 }

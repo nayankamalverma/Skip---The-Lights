@@ -23,6 +23,11 @@ public class PlayerMovementController : MonoBehaviour
     private bool isJumping = false;
     private float jumpTimer;
 
+    private void OnEnable()
+    {
+        jumpTimer = 0;
+    }
+
     private void Update()
     {
         isGrounded = Physics2D.OverlapCircle(feet.position, groundDistance, groundLayerMask);

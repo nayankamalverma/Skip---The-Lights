@@ -3,6 +3,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+
+    [SerializeField] private GameObject player;
     public float currenScore = 0f;
     public bool isPlaying = false;
 
@@ -26,6 +28,7 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         isPlaying = true;
+        if( !player.activeSelf )player.SetActive(true);
     }
 
     public void GameOver()
