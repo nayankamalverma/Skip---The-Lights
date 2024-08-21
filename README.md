@@ -1,3 +1,4 @@
+[![Video](https://img.youtube.com/vi/74bQSqWbbkY/0.jpg)](https://www.youtube.com/watch?v=74bQSqWbbkY)
 
 <h1>Skip---The-Lights</h1> <br>
 Open link to play game - https://outscal.com/nayankamalverma/game/play-skip-the-lights-1-game <br>
